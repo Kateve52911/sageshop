@@ -5,7 +5,7 @@ import { ShoppingBasket } from 'lucide-react'
 const RootLayout = () => (
     <>
         <div className="p-2 flex justify-between gap-2">
-            <Link to="/" className="[&.active]:font-bold font-serif text-5xl text-ink p-2 " search={{ filter: undefined, page: 1 }}>
+            <Link to="/" className=" font-serif text-5xl text-ink p-2 " search={{ filter: undefined, page: 1 }}>
                 SageShop
             </Link>{' '}
             <div className="flex justify-evenly gap-2 content-center p-4 ">

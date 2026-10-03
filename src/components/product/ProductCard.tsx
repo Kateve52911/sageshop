@@ -13,7 +13,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
-import type { Product } from '@/schemas/product'
+import type { Product } from '@/types/product.ts'
 
 export function ProductCard({ product }: { product: Product }) {
     const discountPercentage = () => {

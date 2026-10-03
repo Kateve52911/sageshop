@@ -1,6 +1,6 @@
 import {BASE_URL, SHOP_URL} from "./config.ts";
 
-import type {Product} from "@/schemas/product.ts";
+import type {Product} from "@/types/product.ts";
 import {fetchHelper} from "./fetchHelper.ts";
 
 export async function fetchProducts():Promise<Product[]> {

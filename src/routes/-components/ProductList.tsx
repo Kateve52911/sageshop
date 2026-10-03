@@ -6,7 +6,7 @@ import ErrorMessage from "@/components/common/ErrorMessage.tsx";
 import {ProductCard} from "@/components/product/ProductCard.tsx";
 import PaginationControls from "@/routes/-components/PaginationControls.tsx";
 import {useNavigate, useSearch} from "@tanstack/react-router"
-import type {Product} from "@/schemas/product.ts";
+import type {Product} from "@/types/product.ts";
 
 const itemsPerPage = 6
 
@@ -32,7 +32,6 @@ export default  function ProductList() {
             <p>No data available</p>
         )
     }
-
    const productsToDisplay: Product[] = ((filter) ? data.filter((product) =>
        product.title.toLowerCase().includes(filter.toLowerCase()) ||
        product.description.toLowerCase().includes(filter.toLowerCase()) ||
