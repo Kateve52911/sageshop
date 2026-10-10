@@ -1,4 +1,4 @@
-//import type {Product} from "@/schemas/product.ts";
+
 import { useQuery } from '@tanstack/react-query'
 import {fetchProducts} from "@/services/api/fetchProducts.ts";
 import LoadingSpinner from "@/components/common/LoadingSpinner.tsx";
@@ -8,7 +8,7 @@ import PaginationControls from "@/routes/-components/PaginationControls.tsx";
 import {useNavigate, useSearch} from "@tanstack/react-router"
 import type {Product} from "@/types/product.ts";
 
-const itemsPerPage = 6
+const itemsPerPage = 9
 
 export default  function ProductList() {
     const { data, isLoading, error } = useQuery ({
@@ -50,13 +50,13 @@ export default  function ProductList() {
     }
 
     return (
-        <div className={'my-10'}>
-            <div className={"grid grid-cols-2 md:grid-cols-3 justify-items-center gap-3"}>
+        <div className="my-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center gap-8">
                 {currentItems.map((product) => (
                     <ProductCard key={product.id} product={product}/>
                 ))}
             </div>
-            <div className={'my-5'}>
+            <div className="my-5">
                 <PaginationControls currentPage={page} totalPages={totalPages} onPageChange={handlePageChange}/>
             </div>
         </div>
