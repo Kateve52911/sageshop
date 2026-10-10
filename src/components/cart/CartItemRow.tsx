@@ -2,14 +2,24 @@ import type {CartItem} from "@/types/cartItem";
 import {useCartStore} from "@/stores/cartStore";
 import {Trash2} from "lucide-react";
 import { toast } from "sonner"
+import {Marker} from "@/components/ui/marker";
 
-
+/**
+ * One row in the shopping cart.
+ *
+ * Shows the product image, title, quantity controls, price and a remove
+ * button, followed by a divider line. The plus and minus buttons change the
+ * quantity in the cart store, and the bin button removes the item and shows
+ * a "Removed from cart" toast.
+ *
+ * @param item - The cart item to display.
+ */
 export default function CartItemRow({ item }: { item: CartItem }) {
     const removeItem = useCartStore((state) => state.removeItem);
     const setQuantity = useCartStore((state) => state.setQuantity);
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-4 md:items-center justify-items-center shadow-lg p-2 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:items-center justify-items-center  p-2 gap-2">
             <img  className="w-20 rounded shadow-lg" src={item.image.url} alt={item.image.alt} />
             <h4 className=" text-lg font-bold mx-2 text-center md:text-left">{item.title}</h4>
             <div className="flex items-center">
@@ -21,6 +31,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
                 <p>Price: <span className="font-bold">{item.discountedPrice}</span></p>
                 <button onClick={() => {removeItem(item.id); toast("Removed from cart!")}} aria-label="Remove item" className="text-destructive"><Trash2 size={16}/></button>
             </div>
+            <Marker variant="border" className="w-full col-span-full"/>
         </div>
 
     )

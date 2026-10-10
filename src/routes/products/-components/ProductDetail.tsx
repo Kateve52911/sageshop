@@ -38,7 +38,6 @@ export default function ProductDetail({ product }: { product: Product }) {
                                     <p className="text-lg">{review.description}</p>
                                     <p><span className={'font-bold'}>Product rating: </span>{review.rating}</p>
                                 </div>
-
                             </div>
                         ))}
                     </div>
