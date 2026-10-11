@@ -8,7 +8,7 @@ export default function ProductDetail({ product }: { product: Product }) {
     const addItem = useCartStore((state) => state.addItem);
     return (
         <div className="flex flex-col items-center gap-6 mx-auto max-w-3xl">
-            <div className="flex-col md:flex-row justify-center items-start gap-3">
+            <div className="flex flex-col md:flex-row justify-center md:items-start gap-3">
                 <div>
                     <img  className="w-96 rounded shadow-lg" src={product.image.url} alt={product.image.alt} />
                 </div>

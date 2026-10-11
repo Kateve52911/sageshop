@@ -26,25 +26,25 @@ export function ProductCard({ product }: { product: Product }) {
 
     return (
 
-            <Card className="relative h-full max-w-xs motion-safe:hover:scale-105 safe:focus-within:scale-105 transition hover:shadow-lg duration-200">
+            <Card className="relative h-full w-full max-w-xs motion-safe:hover:scale-105 motion-safe:focus-within:scale-105 transition hover:shadow-lg duration-200">
                 {product.discountedPrice < product.price && (
                     <Badge className="bg-terracotta absolute top-2 right-2">{discountPercentage()}%</Badge>
                 )}
                 <Link to="/products/$productId"  params={{productId: product.id}} className="w-full">
-                <CardHeader className={'flex justify-center'}>
-                    <img src={product.image.url} alt={product.image.alt} className={'w-full aspect-square object-cover rounded-md'} />
+                <CardHeader className="flex justify-center">
+                    <img src={product.image.url} alt={product.image.alt} className="w-full block-50 object-cover rounded-md" />
                 </CardHeader>
                 <CardContent>
-                    <CardTitle className={'text-xl'}>{product.title}</CardTitle>
-                    <div className={'flex gap-5 my-2 text-lg'}>
+                    <CardTitle className="text-xl py-2">{product.title}</CardTitle>
+                    <div className="flex gap-5 my-2 text-lg">
                         <p>{product.discountedPrice}</p>
                         {product.discountedPrice < product.price && (
-                            <p className={'line-through text-gray-500'}>{product.price}</p>
+                            <p className="line-through text-gray-400">{product.price}</p>
                         )}
                     </div>
-                    <CardDescription className={'flex flex-col gap-2'}>
+                    <CardDescription className="flex flex-col gap-2">
                         <p>{product.description}</p>
-                        <p><span className={'font-bold'}>Product rating:</span> {product.rating}</p>
+                        <p><span className="font-bold">Product rating:</span> {product.rating}</p>
                         <p>
                             {product.tags.map((tag: string) => (
                                 <span key={tag}> #{tag}</span>
@@ -53,7 +53,7 @@ export function ProductCard({ product }: { product: Product }) {
                     </CardDescription>
                 </CardContent>
                 </Link>
-                <CardFooter className={'flex justify-center gap-1 mt-auto'}>
+                <CardFooter className="flex justify-center gap-1 mt-auto">
                     <Button className="w-full mt-4" onClick={() =>  {addItem(product); toast("Added to cart!")}} >
                         Add to cart <ShoppingBasket/>
                     </Button>
