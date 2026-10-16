@@ -16,6 +16,7 @@ import type { Product } from '@/types/product.ts';
 import { useCartStore } from '@/stores/cartStore.ts';
 import { toast } from 'sonner';
 
+
 /** Props for `ProductCard`. */
 interface ProductCardProps {
   /** The product to show on the card. */
@@ -43,7 +44,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <Card className="relative h-full w-full max-w-xs group transition hover:shadow-lg">
       {product.discountedPrice < product.price && (
         <Badge className="bg-terracotta absolute top-2 right-2 z-10">
-          {discountPercentage()}%
+          -{discountPercentage()}%
         </Badge>
       )}
       <Link

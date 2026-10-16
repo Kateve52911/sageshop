@@ -52,7 +52,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
         <button
           onClick={() => {
             removeItem(item.id);
-            toast('Removed from cart!');
+              toast(`${item.title} was removed from your cart!`);
           }}
           aria-label="Remove item"
           className="text-destructive"

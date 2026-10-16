@@ -1,6 +1,6 @@
 # Bidly Auction Site
 
-![Index-not-authenticated.png](src/assets/images/Index-not-authenticated.png)
+![Index-computer.png](public/images/screenshots/Index-large.png)
 
 ## Intro
 
@@ -134,7 +134,7 @@ which handles errors in one place and throws an `APIError` with the status code.
 ### Images
 
 The index page:
-![Index-computer.png](public/images/screenshots/Index-computer.png)
+![Index-computer.png](public/images/screenshots/Index-large.png)
 
 The index page:
 ![Index-phone.png](public/images/screenshots/Index-phone.png)
@@ -142,73 +142,46 @@ The index page:
 
 ### Project structure:
 
+## Project structure
+
 ```
-bidly/
+sageshop/
+├── public/
+│   ├── _redirects              # Netlify: serve index.html on every path (SPA routing)
+│   └── images/                 # Favicons and README screenshots
 ├── src/
-│   └── app/
-│       ├── api/                    # API integration
-│       │   ├── auth/               # Authentication endpoints
-│       │   ├── listings/           # Listing CRUD operations
-│       │   ├── user/               # User/profile operations
-│       │   ├── config/             # API configuration
-│       │   └── types/              # TypeScript type definitions
-│       ├── components/             # Reusable UI components
-│       │   ├── errorHandling/      # Error display components
-│       │   ├── forms/              # Form components
-│       │   ├── listings/           # Listing display components
-│       │   ├── navbar/             # Navigation bar
-│       │   ├── profile/            # Profile components
-│       │   └── serachAndFilter/    # Search & filter functionality
-│       ├── pages/                  # Page-specific TypeScript
-│       │   ├── index.ts            # Home page logic
-│       │   ├── login.ts            # Login page logic
-│       │   ├── register.ts         # Register page logic
-│       │   ├── profile.ts          # Profile page logic
-│       │   ├── new-listing.ts      # Create listing logic
-│       │   └── singleListing.ts    # Single listing view logic
-│       ├── ui/                     # UI rendering utilities
-│       │   ├── auth/
-│       │   └── events/
-│       └── utils/                  # Helper functions
-│           ├── helpers/            # General utilities
-│           │   ├── card/
-│           │   ├── delay/
-│           │   ├── forms/
-│           │   ├── heroSection/
-│           │   ├── listings/
-│           │   └── modal/
-│           ├── storage/            # Local storage management
-│           └── validation/         # Form validation
-├── scss/                           # Styling
-│   ├── custom-bootstrap.scss       # Bootstrap customization
-│   └── styles.scss                 # Custom styles
-├── assets/                         # Static assets
-│   ├── favicon/
-│   └── images/
-├── tests/                          # Unit tests
-│   └── e2e/
-│   │   └── auth/
-│   └── unit/
-│       └── app/
-│           ├── ui/
-│           └── utils/
-├── index.html                      # Home page
-├── listing.html                    # Listing detail page
-├── login.html                      # Login page
-├── register.html                   # Register page
-├── profile.html                    # Profile page
-├── new-listing.html                # Create listing page
-├── main.ts                         # Application entry point
-├── vite.config.ts                  # Vite configuration
-├── vitest.config.ts
-├── tsconfig.json                   # TypeScript configuration
-└── package.json
-└── package-lock.json
-└── env.examples
-└── eslint.config.mjs
-└── playwright.config.ts
-├── prettierrc
-├── .gitignore
+│   ├── components/
+│   │   ├── cart/               # CartItemRow, CartLink (cart icon with item count)
+│   │   ├── common/             # ErrorMessage, LoadingSpinner
+│   │   ├── layout/             # Header, Footer
+│   │   ├── product/            # ProductCard, StarRating
+│   │   └── ui/                 # shadcn/ui components
+│   ├── lib/
+│   │   └── utils.ts            # cn() helper for class names
+│   ├── routes/                 # File-based routing (TanStack Router)
+│   │   ├── __root.tsx          # Root layout: header, footer, page titles
+│   │   ├── index.tsx           # Homepage: hero, search, sort, product list
+│   │   ├── -components/        # Homepage-only components (Hero, ProductList, SearchBar, SortSelector, PaginationControls)
+│   │   ├── products/
+│   │   │   ├── $productId.tsx  # Product detail page
+│   │   │   └── -components/    # ProductDetail
+│   │   ├── cart/
+│   │   │   ├── index.tsx       # Cart page
+│   │   │   └── success.tsx     # Checkout success page (clears the cart)
+│   │   └── contact/
+│   │       └── index.tsx       # Contact form
+│   ├── schemas/
+│   │   └── contactSchema.ts    # Zod validation for the contact form
+│   ├── services/api/           # API fetch functions, fetchHelper and APIError
+│   ├── stores/
+│   │   └── cartStore.ts        # Zustand cart store (saved to localStorage)
+│   ├── types/                  # Product and CartItem types
+│   ├── index.css               # Tailwind and theme variables
+│   └── main.tsx                # App entry: router and TanStack Query setup
+├── components.json             # shadcn/ui config
+├── eslint.config.js
+├── .prettierrc
+└── vite.config.ts
 ```
 
 ## Contributing

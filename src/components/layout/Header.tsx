@@ -18,7 +18,7 @@ export default function Header() {
         aria-label="SageShop, go to homepage"
         search={{ filter: undefined, page: 1 }}
       >
-        <div className="flex items-center">
+        <div className="flex items-center px-4">
           S
           <Leaf className="lg:size-10 size-5" strokeWidth={1} color="#5C7A5E" />
           geShop

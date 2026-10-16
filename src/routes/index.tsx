@@ -40,13 +40,12 @@ function Index() {
         <Hero/>
         <div className="mx-auto max-w-6xl justify-items-center my-2">
           <h1 className="sr-only">Products</h1>
-          <div className="w-full sm:items-center gap-3 max-w-5xl mx-auto flex flex-col sm:flex-row">
+          <div className="w-full sm:items-center gap-3 max-w-sm lg:max-w-5xl lg:mx-auto flex flex-col sm:flex-row">
             <div className="flex-1">
               <SearchBar />
             </div>
             <SortSelector value={sort} onChange={setSort} />
           </div>
-
           <ProductList sort={sort} />
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useCartStore } from '@/stores/cartStore';
-import { ArrowRight } from 'lucide-react';
+import {ArrowRight, Leaf} from 'lucide-react';
 import CartItemRow from '@/components/cart/CartItemRow';
 import { Button } from '@/components/ui/button';
 
@@ -34,6 +34,7 @@ function Cart() {
   if (items.length === 0) {
     return (
       <div className="flex flex-col items-center mx-auto gap-6 m-6">
+        <Leaf className="size-40 text-sage" strokeWidth={1}/>
         <h2 className="text-2xl font-bold text-center text-sage">
           Your shopping cart:
         </h2>

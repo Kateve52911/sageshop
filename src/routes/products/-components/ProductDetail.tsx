@@ -4,30 +4,29 @@ import {MessageSquareText} from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { toast } from 'sonner';
 import {Badge} from "@/components/ui/badge.tsx";
-import StarRating from "@/components/product/StartRating.tsx";
+import StarRating from "@/components/product/StarRating.tsx";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
   return (
-    <div className="flex flex-col items-center gap-6 mx-auto max-w-3xl">
-      <div className="flex flex-col md:flex-row justify-center md:items-start gap-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 lg:mx-auto my-5 max-w-5xl">
         <div>
           <img
-            className="w-96 rounded shadow-lg"
+            className="rounded shadow-lg aspect-square object-cover"
             src={product.image.url}
             alt={product.image.alt}
           />
         </div>
-        <div className="flex flex-col content-stretch items-start gap-2 mt-5">
-          <h2 className="uppercase text-sm text-gray-500">{product.tags[0]}</h2>
+        <div className="md:row-span-2 flex flex-col gap-2">
+          <p className="uppercase text-sm text-gray-500">{product.tags[0]}</p>
           <h1 className="lowercase text-4xl font-serif">{product.title}</h1>
           <div className="flex gap-5 my-2 text-lg">
             <p className="font-bold">${product.discountedPrice}</p>
             {product.discountedPrice < product.price && (
-              <p className="line-through text-gray-500">$ {product.price}</p>
+              <p className="line-through text-gray-500">${product.price}</p>
             )}
           </div>
-          <p className="w-96">{product.description}</p>
+          <p>{product.description}</p>
           <div className="flex flex-col gap-3">
             <p className="flex items-center gap-1"><span className="font-bold">Product rating:</span><StarRating rating={product.rating} /></p>
             <div className="flex gap-3">
@@ -40,24 +39,23 @@ export default function ProductDetail({ product }: { product: Product }) {
             className="w-full mt-4"
             onClick={() => {
               addItem(product);
-              toast('Added to cart!');
+              toast(`${product.title} was added to your cart!`);
             }}
           >
             Add to cart
           </Button>
         </div>
-      </div>
       {product.reviews.length > 0 && (
-        <div className="flex flex-col gap-3 md:mt-2 m-3">
-          <h3 className="text-xl text-center">PRODUCT REVIEW:</h3>
+        <div className="md:col-start-1 mt-6 gap-3">
+          <h3 className="text-xl">REVIEWS</h3>
           {product.reviews.map((review) => (
-            <div className="gap-4" key={review.id}>
-              <div className="flex flex-col content-stretch gap-4 border py-10 px-20 border-sage rounded ">
-                <p className="uppercase text-gray-500 flex gap-1 items-center">
+            <div key={review.id}>
+              <div className="flex flex-col items-start gap-4 border py-6 px-4 lg:px-8 w-full border-sage-light rounded ">
+                <p className="uppercase text-gray-500 flex gap-1 items-center font-serif">
                   <MessageSquareText size={16}/>{review.username}
                 </p>
                 <p className="text-lg">{review.description}</p>
-                <p className="flex items-center gap-1"><span className="font-bold">Product rating:</span><StarRating rating={product.rating} /></p>
+                <p className="flex items-center gap-1"><span className="font-bold">Rating:</span><StarRating rating={review.rating} /></p>
               </div>
             </div>
           ))}

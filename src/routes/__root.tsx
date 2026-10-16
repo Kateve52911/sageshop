@@ -14,7 +14,7 @@ const RootLayout = () => (
     <div className="flex flex-col min-h-screen">
       <HeadContent />
       <Header />
-      <div className="flex-1 pb-30">
+      <div className="flex-1 pb-10">
         <Outlet />
       </div>
       <Footer />
