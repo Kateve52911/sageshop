@@ -11,7 +11,7 @@ import CartLink from '@/components/cart/CartLink.tsx';
  */
 export default function Header() {
   return (
-    <header className="p-2 flex justify-between items-center gap-2 shadow-md bg-cream fixed top-0 left-0 right-0 z-50">
+    <header className="p-2 flex justify-between items-center gap-2 shadow-md bg-cream sticky top-0 z-50">
       <Link
         to="/"
         className=" font-serif md:text-5xl text-2xl text-ink p-2"
@@ -28,11 +28,11 @@ export default function Header() {
         <Link
           to="/"
           search={{ filter: undefined, page: 1 }}
-          className="[&.active]:font-bold"
+          className="[&.active]:font-bold hover:border-b-3 hover:border-sage"
         >
           Home
         </Link>
-        <Link to="/contact" className="[&.active]:font-bold">
+        <Link to="/contact" className="[&.active]:font-bold hover:border-b-3 hover:border-sage">
           Contact
         </Link>
         <CartLink />

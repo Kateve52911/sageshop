@@ -5,6 +5,7 @@ import SortSelector, {
   type SortOptions,
 } from '@/routes/-components/SortSelector';
 import { useState } from 'react';
+import Hero from "@/routes/-components/Hero.tsx";
 
 /**
  * The homepage route.
@@ -35,16 +36,20 @@ export const Route = createFileRoute('/')({
 function Index() {
   const [sort, setSort] = useState<SortOptions>('default');
   return (
-    <div className="mx-auto max-w-6xl justify-items-center p-2">
-      <h1 className="sr-only">Products</h1>
-      <div className="w-full sm:items-center gap-3 max-w-5xl mx-auto flex flex-col sm:flex-row">
-        <div className="flex-1">
-          <SearchBar />
+      <div>
+        <Hero/>
+        <div className="mx-auto max-w-6xl justify-items-center my-2">
+          <h1 className="sr-only">Products</h1>
+          <div className="w-full sm:items-center gap-3 max-w-5xl mx-auto flex flex-col sm:flex-row">
+            <div className="flex-1">
+              <SearchBar />
+            </div>
+            <SortSelector value={sort} onChange={setSort} />
+          </div>
+
+          <ProductList sort={sort} />
         </div>
-        <SortSelector value={sort} onChange={setSort} />
       </div>
 
-      <ProductList sort={sort} />
-    </div>
   );
 }

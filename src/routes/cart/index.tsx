@@ -33,15 +33,18 @@ function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col items-start gap-6 m-6">
-        <h2 className="text-xl">Your cart is empty.</h2>
-        <Link
-          to="/"
-          search={{ filter: undefined, page: 1 }}
-          className="text-xl flex items-center"
+      <div className="flex flex-col items-center mx-auto gap-6 m-6">
+        <h2 className="text-2xl font-bold text-center text-sage">
+          Your shopping cart:
+        </h2>
+        <h3 className="text-xl">Your cart is empty.</h3>
+        <Button
+            className="flex items-center"
+            render={<Link to="/" search={{ filter: undefined, page: 1 }} />}
+            nativeButton={false}
         >
           Continue shopping <ArrowRight size={16} />
-        </Link>
+        </Button>
       </div>
     );
   }

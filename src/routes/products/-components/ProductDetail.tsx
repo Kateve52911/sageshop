@@ -1,8 +1,10 @@
 import type { Product } from '@/types/product';
 import { Button } from '@/components/ui/button';
-import { UserStar } from 'lucide-react';
+import {MessageSquareText} from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { toast } from 'sonner';
+import {Badge} from "@/components/ui/badge.tsx";
+import StarRating from "@/components/product/StartRating.tsx";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
@@ -18,14 +20,22 @@ export default function ProductDetail({ product }: { product: Product }) {
         </div>
         <div className="flex flex-col content-stretch items-start gap-2 mt-5">
           <h2 className="uppercase text-sm text-gray-500">{product.tags[0]}</h2>
-          <h1 className="lowercase text-4xl">{product.title}</h1>
-          <div className={'flex gap-5 my-2 text-lg'}>
-            <p>{product.discountedPrice}</p>
+          <h1 className="lowercase text-4xl font-serif">{product.title}</h1>
+          <div className="flex gap-5 my-2 text-lg">
+            <p className="font-bold">${product.discountedPrice}</p>
             {product.discountedPrice < product.price && (
-              <p className={'line-through text-gray-500'}>{product.price}</p>
+              <p className="line-through text-gray-500">$ {product.price}</p>
             )}
           </div>
           <p className="w-96">{product.description}</p>
+          <div className="flex flex-col gap-3">
+            <p className="flex items-center gap-1"><span className="font-bold">Product rating:</span><StarRating rating={product.rating} /></p>
+            <div className="flex gap-3">
+              {product.tags.map((tag: string) => (
+                  <Badge className="bg-sage-light text-dark" key={tag}> #{tag}</Badge>
+              ))}
+            </div>
+          </div>
           <Button
             className="w-full mt-4"
             onClick={() => {
@@ -43,14 +53,11 @@ export default function ProductDetail({ product }: { product: Product }) {
           {product.reviews.map((review) => (
             <div className="gap-4" key={review.id}>
               <div className="flex flex-col content-stretch gap-4 border py-10 px-20 border-sage rounded ">
-                <p className="uppercase text-gray-500 flex items-center">
-                  <UserStar /> {review.username}
+                <p className="uppercase text-gray-500 flex gap-1 items-center">
+                  <MessageSquareText size={16}/>{review.username}
                 </p>
                 <p className="text-lg">{review.description}</p>
-                <p>
-                  <span className={'font-bold'}>Product rating: </span>
-                  {review.rating}
-                </p>
+                <p className="flex items-center gap-1"><span className="font-bold">Product rating:</span><StarRating rating={product.rating} /></p>
               </div>
             </div>
           ))}

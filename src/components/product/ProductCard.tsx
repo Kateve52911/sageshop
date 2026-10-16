@@ -40,9 +40,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
 
   return (
-    <Card className="relative h-full w-full max-w-xs motion-safe:hover:scale-105 motion-safe:focus-within:scale-105 transition hover:shadow-lg duration-200">
+    <Card className="relative h-full w-full max-w-xs group transition hover:shadow-lg">
       {product.discountedPrice < product.price && (
-        <Badge className="bg-terracotta absolute top-2 right-2">
+        <Badge className="bg-terracotta absolute top-2 right-2 z-10">
           {discountPercentage()}%
         </Badge>
       )}
@@ -52,31 +52,24 @@ export function ProductCard({ product }: ProductCardProps) {
         className="w-full"
       >
         <CardHeader className="flex justify-center">
-          <img
-            src={product.image.url}
-            alt={product.image.alt}
-            className="w-full block-50 object-cover rounded-md"
+          <div className="overflow-hidden rounded-md w-full object-cover block-70 aspect-square ">
+            <img
+              src={product.image.url}
+              alt={product.image.alt}
+              className=" transition-transform duration-300 motion-safe:group-hover:scale-105 motion-safe:group-focus-within:scale-105"
           />
+          </div>
         </CardHeader>
         <CardContent>
-          <CardTitle className="text-xl py-2">{product.title}</CardTitle>
+          <CardTitle className="text-xl py-2 font-serif">{product.title}</CardTitle>
           <div className="flex gap-5 my-2 text-lg">
-            <p>{product.discountedPrice}</p>
+            <p className="font-bold">$ {product.discountedPrice}</p>
             {product.discountedPrice < product.price && (
-              <p className="line-through text-gray-400">{product.price}</p>
+              <p className="line-through text-gray-400">$ {product.price}</p>
             )}
           </div>
-          <CardDescription className="flex flex-col gap-2">
+          <CardDescription className="flex flex-col gap-2 line-clamp-2">
             <p>{product.description}</p>
-            <p>
-              <span className="font-bold">Product rating:</span>{' '}
-              {product.rating}
-            </p>
-            <p>
-              {product.tags.map((tag: string) => (
-                <span key={tag}> #{tag}</span>
-              ))}
-            </p>
           </CardDescription>
         </CardContent>
       </Link>
@@ -85,7 +78,7 @@ export function ProductCard({ product }: ProductCardProps) {
           className="w-full mt-4"
           onClick={() => {
             addItem(product);
-            toast('Added to cart!');
+            toast(`${product.title} was added to your cart!`);
           }}
         >
           Add to cart <ShoppingBasket />
