@@ -19,8 +19,8 @@ export interface SortSelectProps {
 
 const items: { label: string; value: SortOptions }[] = [
     {label: "Default", value: "default"},
-    {label: "Price: High to low", value: "price-asc"},
-    {label: "Price: Low to low", value: "price-desc"},
+    {label: "Price: High to low", value: "price-desc"},
+    {label: "Price: Low to low", value: "price-asc"},
     {label: "Rating", value: "rating"},
 ]
 
