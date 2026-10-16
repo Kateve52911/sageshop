@@ -1,16 +1,21 @@
 
 import { useQuery } from '@tanstack/react-query'
-import {fetchProducts} from "@/services/api/fetchProducts.ts";
-import LoadingSpinner from "@/components/common/LoadingSpinner.tsx";
-import ErrorMessage from "@/components/common/ErrorMessage.tsx";
-import {ProductCard} from "@/components/product/ProductCard.tsx";
-import PaginationControls from "@/routes/-components/PaginationControls.tsx";
+import {fetchProducts} from "@/services/api/fetchProducts";
+import LoadingSpinner from "@/components/common/LoadingSpinner";
+import ErrorMessage from "@/components/common/ErrorMessage";
+import {ProductCard} from "@/components/product/ProductCard";
+import PaginationControls from "@/routes/-components/PaginationControls";
 import {useNavigate, useSearch} from "@tanstack/react-router"
-import type {Product} from "@/types/product.ts";
+import type {Product} from "@/types/product";
+import type {SortOptions} from "@/routes/-components/SortSelector";
 
 const itemsPerPage = 9
 
-export default  function ProductList() {
+interface ProductListProps {
+    sort: SortOptions;
+}
+
+export default  function ProductList({ sort }: ProductListProps) {
     const { data, isLoading, error } = useQuery ({
         queryKey: ['products'],
         queryFn: fetchProducts,
@@ -37,11 +42,28 @@ export default  function ProductList() {
        product.description.toLowerCase().includes(filter.toLowerCase()) ||
        product.tags.some((tag: string): boolean => tag.toLowerCase().includes(filter.toLowerCase()))) : data )
 
-    const totalPages: number = Math.ceil(productsToDisplay.length / itemsPerPage)
+    let sortedProducts: Product[]
+
+    switch(sort) {
+        case "price-asc":
+            sortedProducts = productsToDisplay.toSorted((a, b) => a.discountedPrice - b.discountedPrice)
+            break
+        case "price-desc":
+            sortedProducts = productsToDisplay.toSorted((a, b) => b.discountedPrice - a.discountedPrice)
+            break
+        case "rating":
+            sortedProducts = productsToDisplay.toSorted((a, b) => b.rating - a.rating)
+            break
+        default:
+            sortedProducts = productsToDisplay
+            break
+    }
+
+    const totalPages: number = Math.ceil(sortedProducts.length / itemsPerPage)
 
     const indexOfLastItem: number = page * itemsPerPage
     const indexOfFirstItem: number = indexOfLastItem - itemsPerPage
-    const currentItems: Product[] = productsToDisplay.slice(indexOfFirstItem, indexOfLastItem)
+    const currentItems: Product[] = sortedProducts.slice(indexOfFirstItem, indexOfLastItem)
 
     const handlePageChange = (pageNumber: number): void => {
         if (pageNumber >= 1 && pageNumber <= totalPages)  {

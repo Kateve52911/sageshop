@@ -13,7 +13,7 @@ export default function SearchBar() {
     const navigate = useNavigate({ from: '/' })
 
     return (
-        <InputGroup className="relative mx-w-m md:max-w-xl mx-auto">
+        <InputGroup className="relative">
             <InputGroupInput id="inline-start-input" value={filter ?? ''} onChange={(e) => {void navigate({search:{filter: e.target.value, page: 1}, replace:true} )}} placeholder="Search..." />
             <InputGroupAddon align="inline-start">
                 <SearchIcon className="text-muted-foreground"/>
