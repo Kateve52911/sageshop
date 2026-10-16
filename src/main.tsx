@@ -1,32 +1,32 @@
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-import './index.css'
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
+import './index.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Import the generated route tree
-import { routeTree } from './routeTree.gen'
+import { routeTree } from './routeTree.gen';
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 const router = createRouter({
-    routeTree,
-    context: { queryClient },
-    defaultPreloadStaleTime: 0
-})
+  routeTree,
+  context: { queryClient },
+  defaultPreloadStaleTime: 0,
+});
 
 declare module '@tanstack/react-router' {
-    interface Register {
-        router: typeof router
-    }
+  interface Register {
+    router: typeof router;
+  }
 }
 
-const rootElement = document.getElementById('root')!
+const rootElement = document.getElementById('root')!;
 if (!rootElement.innerHTML) {
-    const root = ReactDOM.createRoot(rootElement)
-    root.render(
-        <StrictMode>
-            <QueryClientProvider client={queryClient}>
-                <RouterProvider router={router} />
-            </QueryClientProvider>
-        </StrictMode>,
-    )
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </StrictMode>,
+  );
 }

@@ -5,16 +5,16 @@
  * so the app can show different messages for different errors.
  */
 export class APIError extends Error {
-    /** The HTTP status code from the response. Undefined if there was no response, e.g. a network error. */
-    readonly status?: number;
+  /** The HTTP status code from the response. Undefined if there was no response, e.g. a network error. */
+  readonly status?: number;
 
-    /**
-     * @param message - A readable description of what went wrong.
-     * @param status - The HTTP status code, if there was a response.
-     */
-    constructor(message: string, status?: number) {
-        super(message);
-        this.name = 'APIError';
-        this.status = status
-    }
+  /**
+   * @param message - A readable description of what went wrong.
+   * @param status - The HTTP status code, if there was a response.
+   */
+  constructor(message: string, status?: number) {
+    super(message);
+    this.name = 'APIError';
+    this.status = status;
+  }
 }
