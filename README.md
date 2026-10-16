@@ -23,11 +23,15 @@ SageShop is my assignment for the course Javascript Frameworks and is a part of 
 
 ## Feature overview
 
+- [x] Browse products
 - [x] Filter by options
-- [x] Browse and search products
+- [X] Search products
 - [x] Adding products to cart
+- [X] Change quantity in cart
+- [X] Delete products from cart
 - [x] Successfully go through checkout
 - [x] See product and reviews of the product
+- [X] Contact form with form validation 
 - [x] Responsive design for all devices
 
 ## Contents
@@ -36,10 +40,11 @@ SageShop is my assignment for the course Javascript Frameworks and is a part of 
   - [Requirements](#requirements)
   - [Install](#install)
   - [Usage](#usage)
+- [Used Technologies](#used-technologies)
+  - [API](#Api)
 - [Images and Project Structure](#images-and-project-structure)
   - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-  - [Used Technologies](#used-technologies)
   - [Testing](#testing)
 
 ## Getting Started
@@ -83,29 +88,57 @@ npm run dev
 
 Open your browser and navigate to the local host address shown in the terminal.
 
-**As a user you can:**
+After installation, run the build server:
 
-- Register for an account (receiving 1000 credits in the process)
-- Browse and search for auction listings
-- Create your own listings
-- Bid on items
-- View your profile and bid history
+```bash
+npm run build
+```
+
+Open your browser and navigate to the local host address shown in the terminal.
+
+
+## Used technologies
+
+The tech stack for this project includes:
+
+- React
+- Typescript
+- Tailwind
+- Shadcn/ui
+- TanStack Router
+- TanStack Query
+- Zustand
+- React Hook Form
+- Zod
+- Vite
+- Vitest
+- Husky
+- ESLint
+- PlayWright
+
+### API
+
+Product data comes from the [Noroff Online Shop API](https://docs.noroff.dev/docs/v2/basic/online-shop). No API key is needed.
+
+| Endpoint                | Used for                             |
+|-------------------------|--------------------------------------|
+| `GET /online-shop`      | All products on the homepage         |
+| `GET /online-shop/<id>` | A single product on the product page |
+
+All API code is in `src/services/api/`. Every request goes through `fetchHelper`,
+which handles errors in one place and throws an `APIError` with the status code.
+
 
 ## Images and Project structure:
 
 ### Images
 
-The index page when user is logged in:
+The index page:
+![Index-computer.png](public/images/screenshots/Index-computer.png)
 
-![Index-authenticated.png](src/assets/images/Index-authenticated.png)
+The index page:
+![Index-phone.png](public/images/screenshots/Index-phone.png)
 
-Here you can see what a single listing looks like when the user is logged in:
-
-![Single-listing.png](src/assets/images/Single-listing.png)
-
-Here you see the profile page for the user:
-
-![Profile-image-1.png](src/assets/images/Profile-image-1.png)
 
 ### Project structure:
 
@@ -182,20 +215,6 @@ bidly/
 
 To contribute to the project, simply install as detailed above, and then after finishing your changes, create a PR on GitHub.
 
-### Used technologies
-
-The tech stack for this project includes:
-
-- Typescript
-- Tailwind
-- React
-- ShadCn
-- Tanstack Router
-- Vite
-- Vitest
-- Husky
-- ESLint
-- PlayWright
 
 ### Testing
 
