@@ -11,10 +11,9 @@ import CartLink from "@/components/cart/CartLink.tsx";
  */
 export default function Header() {
     return (
-        <header className="p-2 flex justify-between gap-2 shadow-md bg-cream fixed top-0 left-0 right-0 z-50">
-            <Link to="/" className=" font-serif text-5xl text-ink p-2" aria-label="SageShop, go to homepage" search={{ filter: undefined, page: 1 }}>
-                <div className="flex items-center">S<Leaf size={36} strokeWidth={1} color="#5C7A5E" />geShop</div>
-
+        <header className="p-2 flex justify-between items-center gap-2 shadow-md bg-cream fixed top-0 left-0 right-0 z-50">
+            <Link to="/" className=" font-serif md:text-5xl text-2xl text-ink p-2" aria-label="SageShop, go to homepage" search={{ filter: undefined, page: 1 }}>
+                <div className="flex items-center">S<Leaf className="lg:size-10 size-5" strokeWidth={1} color="#5C7A5E" />geShop</div>
             </Link>
             <nav className="flex justify-evenly gap-2 content-center p-4 ">
                 <Link to="/" search={{ filter: undefined, page: 1 }} className="[&.active]:font-bold">
