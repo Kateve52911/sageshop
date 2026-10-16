@@ -1,7 +1,6 @@
 import {
     Pagination,
     PaginationContent,
-    //PaginationEllipsis,
     PaginationItem,
     PaginationLink,
     PaginationNext,
@@ -10,7 +9,23 @@ import {
 import type { MouseEvent } from "react"
 
 
-export default function PaginationControls({currentPage, totalPages, onPageChange}: {currentPage: number, totalPages: number, onPageChange: (page: number) => void}) {
+/** Props for `PaginationControls`. */
+interface PaginationControlsProps {
+    /** The page that is shown now, starting at 1. */
+    currentPage: number
+    /** How many pages there are in total. */
+    totalPages: number
+    /** Called with the new page number when the user clicks a page, Previous or Next. */
+    onPageChange: (page: number) => void
+}
+
+/**
+ * Page buttons for the product list: Previous, one button per page, and Next.
+ *
+ * Only shows the buttons. The parent decides what happens when the page changes.
+ * Previous is disabled on the first page, and Next on the last.
+ */
+export default function PaginationControls({currentPage, totalPages, onPageChange}: PaginationControlsProps) {
     const pageNumbers: number[] = []
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i)
@@ -19,6 +34,10 @@ export default function PaginationControls({currentPage, totalPages, onPageChang
     const goToPage  = (event: MouseEvent<HTMLAnchorElement>, page: number) => {
         event.preventDefault();
         onPageChange(page)
+    }
+
+    if (totalPages <= 1) {
+        return null
     }
 
     return (

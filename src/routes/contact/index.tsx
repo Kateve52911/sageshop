@@ -18,6 +18,11 @@ import { toast } from 'sonner';
 
 export const Route = createFileRoute('/contact/')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      { title: "SageShop | Contact"}
+    ]
+  })
 })
 
 function RouteComponent() {

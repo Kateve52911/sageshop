@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button"
 
 export const Route = createFileRoute('/cart/')({
     component: Cart,
+    head: () => ({
+        meta: [
+            { title: "SageShop | Cart" }
+        ]
+    })
 })
 
 /**

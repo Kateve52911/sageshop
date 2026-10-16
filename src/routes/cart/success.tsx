@@ -6,6 +6,11 @@ import {Button} from "@/components/ui/button.tsx";
 
 export const Route = createFileRoute('/cart/success')({
   component: RouteComponent,
+    head: () => ({
+        meta: [
+            { title: "SageShop | Success" }
+        ]
+    })
 })
 
 function RouteComponent() {

@@ -7,7 +7,17 @@ import ProductDetail from './-components/ProductDetail';
 
 export const Route = createFileRoute('/products/$productId')({
   component: RouteComponent,
-
+  loader: ({context, params}) =>
+      context.queryClient.ensureQueryData({
+        queryKey: ['productId', params.productId],
+        queryFn: () => fetchProductById(params.productId)
+      }),
+  head: ({loaderData}) => ({
+    meta: [
+      { title: `SageShop | ${loaderData?.title || 'Product'}`, },
+    ]
+  }),
+  errorComponent: ({error}) => <ErrorMessage error={error} />,
 })
 
 function RouteComponent() {

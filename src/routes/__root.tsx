@@ -1,4 +1,5 @@
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet, HeadContent } from '@tanstack/react-router'
+import type { QueryClient } from '@tanstack/react-query'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { Toaster } from "@/components/ui/sonner"
 import Header from "@/components/layout/Header";
@@ -7,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 const RootLayout = () => (
     <>
         <div className="flex flex-col min-h-screen">
+            <HeadContent/>
             <Header/>
             <hr />
             <div className="flex-1 pt-30 pb-10">
@@ -19,4 +21,5 @@ const RootLayout = () => (
     </>
 )
 
-export const Route = createRootRoute({ component: RootLayout })
+export const Route = createRootRouteWithContext<{queryClient: QueryClient}>()(
+    { component: RootLayout })

@@ -16,7 +16,22 @@ import type { Product } from '@/types/product.ts'
 import {useCartStore} from "@/stores/cartStore.ts";
 import {toast} from "sonner";
 
-export function ProductCard({ product }: { product: Product }) {
+/** Props for `ProductCard`. */
+interface ProductCardProps {
+    /** The product to show on the card. */
+    product: Product
+}
+
+/**
+ * Card for one product in the product list.
+ *
+ * Shows the image, title, price, description, rating and tags.
+ * If the product is discounted, it also shows the original price crossed out
+ * and a badge with the discount percentage.
+ * Clicking the card opens the product page. The button adds the product to the cart.
+ */
+export function ProductCard({ product }: ProductCardProps) {
+    /** Returns the discount as a whole percentage, e.g. 20 for 20% off. */
     const discountPercentage = () => {
         const difference = product.price - product.discountedPrice
         const fractionOfDiscountedPrice = difference / product.price

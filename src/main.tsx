@@ -6,17 +6,18 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query'
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
 
-
-const router = createRouter({ routeTree })
-
+const queryClient = new QueryClient()
+const router = createRouter({
+    routeTree,
+    context: { queryClient },
+    defaultPreloadStaleTime: 0
+})
 
 declare module '@tanstack/react-router' {
     interface Register {
         router: typeof router
     }
 }
-
-const queryClient = new QueryClient()
 
 const rootElement = document.getElementById('root')!
 if (!rootElement.innerHTML) {
