@@ -10,7 +10,7 @@ import { Leaf } from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="bg-sage p-4">
-      <div className="flex flex-col lg:flex-row items-center lg:justify-between w-full gap-2">
+      <div className="flex flex-col lg:flex-row items-center lg:justify-evenly w-full">
         <div className="flex flex-col items-center gap-2 p-2">
           <Link
               to="/"
@@ -38,11 +38,11 @@ export default function Footer() {
             Cart
           </Link>
         </div>
-        <div className="items-center text-cream text-center font-light p-2">
+        <div className="items-center text-cream text-center flex flex-col font-light px-2">
           <p>
-            &copy; {new Date().getFullYear()} Kathrine Mellem Evensen. All
-            rights reserved.{' '}
+            &copy; {new Date().getFullYear()}, all rights reserved
           </p>
+          <p> Kathrine Mellem Evensen</p>
         </div>
       </div>
     </footer>
