@@ -1,5 +1,5 @@
 import { SearchIcon } from 'lucide-react';
-import { useSearch, useNavigate } from '@tanstack/react-router';
+import { useSearch, useNavigate, useLocation } from '@tanstack/react-router';
 
 import {
   InputGroup,
@@ -8,26 +8,27 @@ import {
 } from '@/components/ui/input-group';
 
 /**
- * Search bar for the product list on the homepage.
+ * Search bar for the product list both on the homepage and other pages. Searching on other pages takes you back to the homepage.
  *
  * The search text is stored in the URL (`?filter=...`) instead of in state,
  * so the search survives a refresh and can be shared as a link.
  * Typing also resets the list to page 1.
  */
 export default function SearchBar() {
-  const { filter } = useSearch({ from: '/' });
-  const navigate = useNavigate({ from: '/' });
+  const { filter } = useSearch({ strict: false });
+  const navigate = useNavigate();
+  const {pathname} = useLocation();
 
   return (
     <InputGroup className="relative">
       <InputGroupInput
-        id="product-search"
         aria-label="Search products"
         value={filter ?? ''}
         onChange={(e) => {
           void navigate({
+              to: '/',
             search: { filter: e.target.value || undefined, page: 1 },
-            replace: true,
+            replace: pathname === '/',
           });
         }}
         placeholder="Search..."

@@ -18,7 +18,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           />
         </div>
         <div className="md:row-span-2 flex flex-col gap-2">
-          <p className="uppercase text-sm text-gray-500">{product.tags[0]}</p>
+          <p className="uppercase text-sm text-gray-500 tracking-widest">{product.tags[0]}</p>
           <h1 className="lowercase text-4xl font-serif">{product.title}</h1>
           <div className="flex gap-5 my-2 text-lg">
             <p className="font-bold">${product.discountedPrice}</p>

@@ -139,12 +139,12 @@
   html {
     @apply font-sans;
   }
+  ::selection {
+    @apply bg-sage-light text-ink;
+  }
 }
 
 a {
   text-decoration: none;
 }
 
-.bg-gradient-sage {
-  background: linear-gradient(135deg, #5c7a5e 0%, #a9c0a2 100%);
-}

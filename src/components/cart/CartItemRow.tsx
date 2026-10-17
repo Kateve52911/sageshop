@@ -19,7 +19,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
   const setQuantity = useCartStore((state) => state.setQuantity);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 md:items-center justify-items-center  p-2 gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-4 md:items-center justify-items-center p-2 gap-2">
       <img
         className="w-20 rounded shadow-lg"
         src={item.image.url}
@@ -31,7 +31,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
       <div className="flex items-center">
         <button
           onClick={() => setQuantity(item.id, item.quantity - 1)}
-          className="mx-2 px-2 py-1 rounded bg-sage/30"
+          className="mx-2 px-2 py-1 rounded-2xl bg-sage/30"
         >
           -
         </button>
@@ -40,7 +40,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
         </p>
         <button
           onClick={() => setQuantity(item.id, item.quantity + 1)}
-          className="mx-2 px-2 py-1 rounded bg-sage/30"
+          className="mx-2 px-2 py-1 rounded-2xl bg-sage/30"
         >
           +
         </button>
@@ -57,7 +57,7 @@ export default function CartItemRow({ item }: { item: CartItem }) {
           aria-label="Remove item"
           className="text-destructive"
         >
-          <Trash2 size={16} />
+          <Trash2 size={20} />
         </button>
       </div>
       <Marker variant="border" className="w-full col-span-full" />

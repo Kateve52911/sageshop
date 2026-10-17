@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import ProductList from '@/routes/-components/ProductList';
-import SearchBar from '@/routes/-components/SearchBar';
+//import SearchBar from '@/routes/-components/SearchBar';
 import SortSelector, {
   type SortOptions,
 } from '@/routes/-components/SortSelector';
@@ -40,10 +40,7 @@ function Index() {
         <Hero/>
         <div className="mx-auto max-w-6xl justify-items-center my-2">
           <h1 className="sr-only">Products</h1>
-          <div className="w-full sm:items-center gap-3 max-w-sm lg:max-w-5xl lg:mx-auto flex flex-col sm:flex-row">
-            <div className="flex-1">
-              <SearchBar />
-            </div>
+          <div className="w-full sm:items-center gap-3 max-w-md lg:max-w-5xl lg:mx-auto flex flex-col sm:flex-row">
             <SortSelector value={sort} onChange={setSort} />
           </div>
           <ProductList sort={sort} />
