@@ -6,6 +6,11 @@
 **Outcome:** Improved understanding of the course material, which I then used when writing the code myself.<br/>
 
 **Tool:** Claude<br/>
+**Date:** July 2026<br/>
+**Purpose:** Talking through Zustand to see if I understood the concept correctly.<br/>
+**Outcome:** Help was received, I was corrected on some of how I understood the concept, and I gained a proper understanding of how it worked.<br/>
+
+**Tool:** Claude<br/>
 **Date:** 22 July 2026<br/>
 **Purpose:** Brainstorming the header and navigation layout (search bar, cart placement, mobile navigation), and looking at examples of e-commerce sites built as SPAs.<br/>
 **Outcome:** Got feedback on UX conventions. I decided on the final layout myself.<br/>
@@ -13,7 +18,7 @@
 **Tool:** Claude<br/>
 **Date:** 22 July 2026<br/>
 **Purpose:** Brainstorming project structure and build order: choosing between React Router and TanStack Router, folder-per-route structure with `-components` folders, and whether to use TanStack Query for fetching.<br/>
-**Outcome:** Chose the stack and structure. Set up the project and wrote the code independently.<br/>
+**Outcome:** Chose the stack and structure.<br/>
 
 **Tool:** Claude<br/>
 **Date:** 28 september 2026<br/>
@@ -34,6 +39,11 @@
 **Date:** 16 October 2026<br/>
 **Purpose:** Brainstorming how to add sorting, and explanation of `type` vs `interface`, union types, `.toSorted()` with compare functions, and `switch` statements.<br/>
 **Outcome:** Wrote `SortSelector`, the sort logic and `sortProducts`.<br/>
+
+**Tool:** Claude<br/>
+**Date:** 17 October 2026<br/>
+**Purpose:** Help with time-consuming tasks: I asked for help with writing TSdocs.<br/>
+**Outcome:** Help received.<br/>
 
 **Tool:** Claude<br/>
 **Date:** 16 October 2026<br/>

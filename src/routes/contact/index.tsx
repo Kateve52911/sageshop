@@ -30,6 +30,14 @@ export const Route = createFileRoute('/contact/')({
   }),
 });
 
+/**
+ * The contact page: contact form for contacting business
+ *
+ * Form uses React Hook Form
+ * The validation comes from contactSchema using zodResolver.
+ * If invalid and error message appears before form is submitted. Error appears when user leaves contact form.
+ * Forms with invalid fields will not be submitted.
+ */
 function RouteComponent() {
   const {
     register,
@@ -54,7 +62,7 @@ function RouteComponent() {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col max-w-lg md:max-w-xl w-full"
         >
-          <h2 className="text-4xl text-center  my-4">Contact Us:</h2>
+          <h1 className="text-4xl text-center  my-4">Contact Us:</h1>
           <p className=" text-center  my-4">
             Please fill out the form below if you have any feedback for us or
             any other issues we can solve for you.{' '}
