@@ -43,8 +43,7 @@ SageShop is my assignment for the course JavaScript Frameworks and is a part of 
 - [Used Technologies](#used-technologies)
   - [Technical Choices](#technical-choices)
   - [API](#api)
-- [Images and Project Structure](#images-and-project-structure)
-  - [Project Structure](#project-structure)
+- [Images](#images-and-project-structure)
 - [Contributing](#contributing)
   - [Testing](#testing)
 - [Further Improvements](#further-improvements)
@@ -112,7 +111,8 @@ The tech stack for this project includes:
 - React
 - TypeScript
 - Tailwind CSS
-- Shadcn/ui
+  - Shadcn/ui
+  - Lucide Icons
 - TanStack Router
 - TanStack Query
 - Zustand
@@ -175,57 +175,6 @@ Cart on desktop:
 
 Cart on mobile:
 ![Cart-mobile.png](public/images/screenshots/Cart-mobile.png)
-
-### Project structure
-
-```
-sageshop/
-├── .husky/
-│   └── pre-commit              # Runs lint-staged and the tests before each commit
-├── public/
-│   ├── _redirects              # Netlify: serve index.html on every path (SPA routing)
-│   └── images/                 # Favicons and README screenshots
-├── src/
-│   ├── components/
-│   │   ├── cart/               # CartItemRow, CartLink (cart icon with item count)
-│   │   ├── common/             # Breadcrumb (PageBreadcrumb), ErrorMessage, LoadingSpinner
-│   │   ├── layout/             # Header, Footer, SearchBar (used in the header on every page)
-│   │   ├── product/            # ProductCard, StarRating
-│   │   └── ui/                 # shadcn/ui components
-│   ├── lib/
-│   │   └── utils.ts            # cn() helper for class names
-│   ├── routes/                 # File-based routing (TanStack Router)
-│   │   ├── __root.tsx          # Root layout: header, footer, page titles
-│   │   ├── index.tsx           # Homepage: hero, sort, product list
-│   │   ├── -components/        # Homepage components (Hero, ProductList, SortSelector, PaginationControls)
-│   │   ├── products/
-│   │   │   ├── $productId.tsx  # Product detail page
-│   │   │   └── -components/    # ProductDetail
-│   │   ├── cart/
-│   │   │   ├── index.tsx       # Cart page
-│   │   │   └── success.tsx     # Checkout success page (clears the cart)
-│   │   └── contact/
-│   │       └── index.tsx       # Contact form
-│   ├── schemas/
-│   │   └── contactSchema.ts    # Zod validation for the contact form
-│   ├── services/api/           # API fetch functions, fetchHelper and APIError
-│   ├── stores/
-│   │   └── cartStore.ts        # Zustand cart store (saved to localStorage)
-│   ├── test/
-│   │   └── testSetup.ts        # Vitest setup: in-memory localStorage for the tests
-│   ├── types/                  # Product and CartItem types
-│   ├── utils/helperFunctions/
-│   │   └── sortProducts.ts     # Sorts the product list by the chosen option
-│   ├── index.css               # Tailwind and theme variables
-│   └── main.tsx                # App entry: router and TanStack Query setup
-├── components.json             # shadcn/ui config
-├── eslint.config.js
-├── .prettierrc
-└── vite.config.ts              # Vite and Vitest config
-```
-
-Folders starting with `-` are ignored by the router, so components can live next to the page that uses them.
-Test files (`*.test.ts`) are placed next to the file they test.
 
 ## Contributing
 
