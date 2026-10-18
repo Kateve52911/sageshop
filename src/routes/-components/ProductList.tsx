@@ -7,6 +7,7 @@ import PaginationControls from '@/routes/-components/PaginationControls';
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import type { Product } from '@/types/product';
 import type { SortOptions } from '@/routes/-components/SortSelector';
+import { sortProducts } from "@/utils/helperFunctions/sortProducts";
 
 /** How many products are shown per page**/
 const itemsPerPage = 9;
@@ -46,7 +47,7 @@ export default function ProductList({ sort }: ProductListProps) {
   }
 
   if (!data) {
-    return <p>No data available</p>;
+    return <p className="text-center text-2xl text-sage">No data available</p>;
   }
   const productsToDisplay: Product[] = filter
     ? data.filter(
@@ -60,31 +61,10 @@ export default function ProductList({ sort }: ProductListProps) {
     : data;
 
   if (productsToDisplay.length === 0) {
-    return <p className="text-center my-10">No Products match your search.</p>;
+    return <p className="text-center text-sage text-2xl my-10">No Products match your search.</p>;
   }
 
-  let sortedProducts: Product[];
-
-  switch (sort) {
-    case 'price-asc':
-      sortedProducts = productsToDisplay.toSorted(
-        (a, b) => a.discountedPrice - b.discountedPrice,
-      );
-      break;
-    case 'price-desc':
-      sortedProducts = productsToDisplay.toSorted(
-        (a, b) => b.discountedPrice - a.discountedPrice,
-      );
-      break;
-    case 'rating':
-      sortedProducts = productsToDisplay.toSorted(
-        (a, b) => b.rating - a.rating,
-      );
-      break;
-    default:
-      sortedProducts = productsToDisplay;
-      break;
-  }
+  const sortedProducts = sortProducts(productsToDisplay, sort);
 
   const totalPages: number = Math.ceil(sortedProducts.length / itemsPerPage);
 

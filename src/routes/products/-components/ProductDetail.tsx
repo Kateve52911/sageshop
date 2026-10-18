@@ -4,7 +4,7 @@ import {MessageSquareText} from 'lucide-react';
 import { useCartStore } from '@/stores/cartStore';
 import { toast } from 'sonner';
 import {Badge} from "@/components/ui/badge.tsx";
-import StarRating from "@/components/product/StarRating.tsx";
+import StarRating from "@/components/product/StarRating";
 
 export default function ProductDetail({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);

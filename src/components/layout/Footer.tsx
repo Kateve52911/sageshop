@@ -9,9 +9,9 @@ import { Leaf } from 'lucide-react';
  */
 export default function Footer() {
   return (
-    <footer className="bg-sage p-4">
-      <div className="flex flex-col lg:flex-row items-center lg:justify-evenly w-full">
-        <div className="flex flex-col items-center gap-2 p-2">
+    <footer className="bg-sage p-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-6 ">
+        <div className="flex flex-col md:justify-self-start items-center gap-2 md:text-left">
           <Link
               to="/"
               className="font-serif text-3xl text-cream "
@@ -25,24 +25,23 @@ export default function Footer() {
           </Link>
           <h3 className=" text-lg text-center font-light font-serif italic text-cream">Thoughtfully chosen, everyday goods</h3>
         </div>
-        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-4 p-2">
-          <Link to="/"
-                search={{ filter: undefined, page: 1 }}
-                className="[&.active]:font-bold text-cream">
+        <nav className="flex flex-col lg:flex-row items-center justify-center w-full gap-4">
+            <Link to="/"
+                     search={{ filter: undefined, page: 1 }}
+                     className="[&.active]:font-bold text-cream">
             Home
           </Link>
-          <Link to="/contact" className="[&.active]:font-bold text-cream">
-            Contact Us
-          </Link>
-          <Link to="/cart" className="[&.active]:font-bold text-cream">
-            Cart
-          </Link>
-        </div>
-        <div className="items-center text-cream text-center flex flex-col font-light px-2">
-          <p>
-            &copy; {new Date().getFullYear()}, all rights reserved
-          </p>
-          <p> Kathrine Mellem Evensen</p>
+            <Link to="/contact" className="[&.active]:font-bold text-cream">
+              Contact Us
+            </Link>
+            <Link to="/cart" className="[&.active]:font-bold text-cream">
+              Cart
+            </Link>
+        </nav>
+        <div className="items-center text-cream md:text-right md:justify-self-end flex flex-col font-light">
+          <p>&copy; {new Date().getFullYear()}</p>
+          <p>Kathrine M. Evensen</p>
+          <p>All rights reserved</p>
         </div>
       </div>
     </footer>

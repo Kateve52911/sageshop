@@ -1,4 +1,4 @@
-import { useCartStore } from '@/stores/cartStore.ts';
+import { useCartStore } from '@/stores/cartStore';
 import { Link } from '@tanstack/react-router';
 import { ShoppingBasket } from 'lucide-react';
 

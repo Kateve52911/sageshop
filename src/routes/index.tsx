@@ -5,7 +5,7 @@ import SortSelector, {
   type SortOptions,
 } from '@/routes/-components/SortSelector';
 import { useState } from 'react';
-import Hero from "@/routes/-components/Hero.tsx";
+import Hero from "@/routes/-components/Hero";
 
 /**
  * The homepage route.

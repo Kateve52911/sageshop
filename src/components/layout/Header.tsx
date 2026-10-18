@@ -5,9 +5,6 @@ import SearchBar from "@/routes/-components/SearchBar.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import { useState } from 'react';
 
-
-
-
 /**
  * The site header, fixed to the top of the page.
  *
