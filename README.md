@@ -1,6 +1,6 @@
-# Bidly Auction Site
+# SageShop
 
-![Index-computer.png](public/images/screenshots/Index-large.png)
+![Index-computer.png](public/images/screenshots/Index-desktop.png)
 
 ## Intro
 
@@ -25,13 +25,13 @@ SageShop is my assignment for the course Javascript Frameworks and is a part of 
 
 - [x] Browse products
 - [x] Filter by options
-- [X] Search products
+- [x] Search products
 - [x] Adding products to cart
-- [X] Change quantity in cart
-- [X] Delete products from cart
+- [x] Change quantity in cart
+- [x] Delete products from cart
 - [x] Successfully go through checkout
 - [x] See product and reviews of the product
-- [X] Contact form with form validation 
+- [x] Contact form with form validation
 - [x] Responsive design for all devices
 
 ## Contents
@@ -96,7 +96,6 @@ npm run build
 
 Open your browser and navigate to the local host address shown in the terminal.
 
-
 ## Used technologies
 
 The tech stack for this project includes:
@@ -121,24 +120,30 @@ The tech stack for this project includes:
 Product data comes from the [Noroff Online Shop API](https://docs.noroff.dev/docs/v2/basic/online-shop). No API key is needed.
 
 | Endpoint                | Used for                             |
-|-------------------------|--------------------------------------|
+| ----------------------- | ------------------------------------ |
 | `GET /online-shop`      | All products on the homepage         |
 | `GET /online-shop/<id>` | A single product on the product page |
 
 All API code is in `src/services/api/`. Every request goes through `fetchHelper`,
 which handles errors in one place and throws an `APIError` with the status code.
 
-
 ## Images and Project structure:
 
 ### Images
 
-The index page:
-![Index-computer.png](public/images/screenshots/Index-large.png)
+The index page on a computer:
+![Index-computer.png](public/images/screenshots/Index-desktop.png)
 
-The index page:
+The index page on a mobile:
 ![Index-phone.png](public/images/screenshots/Index-phone.png)
 
+Product page on desktop:
+
+Product page on mobile:
+
+Cart on desktop:
+
+Cart on mobile:
 
 ### Project structure:
 
@@ -187,7 +192,6 @@ sageshop/
 ## Contributing
 
 To contribute to the project, simply install as detailed above, and then after finishing your changes, create a PR on GitHub.
-
 
 ### Testing
 
