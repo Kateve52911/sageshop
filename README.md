@@ -4,7 +4,7 @@
 
 ## Intro
 
-SageShop is an online shop where users can browse products, search through the different products, and filter by price or rating.
+SageShop is an online shop where users can browse products, search through the different products, and sort by price or rating.
 
 Users can also view a product, and see reviews that other buyers have left on the product. The user can also add products to a shopping cart and go through checkout.
 
@@ -12,11 +12,9 @@ The shopping cart allows the user to either increase or decrease the quantity of
 
 The checkout process shows a successful "purchase" and the option to continue shopping.
 
-SageShop is my assignment for the course Javascript Frameworks and is a part of my studies to become a front-end developer.
+SageShop is my assignment for the course JavaScript Frameworks and is a part of my studies to become a front-end developer.
 
-#### Live Demo:
-
-[SageShop][sageshop]
+#### Live Demo: [SageShop][sageshop]
 
 [//]: # 'Source definitions'
 [sageshop]: https://sageshop.netlify.app/ 'SageShop'
@@ -24,14 +22,16 @@ SageShop is my assignment for the course Javascript Frameworks and is a part of 
 ## Feature overview
 
 - [x] Browse products
-- [x] Filter by options
+- [x] Sorting by options
 - [x] Search products
+- [x] Search bar in header
 - [x] Adding products to cart
 - [x] Change quantity in cart
 - [x] Delete products from cart
 - [x] Successfully go through checkout
 - [x] See product and reviews of the product
 - [x] Contact form with form validation
+- [x] Breadcrumb on pages
 - [x] Responsive design for all devices
 
 ## Contents
@@ -41,23 +41,26 @@ SageShop is my assignment for the course Javascript Frameworks and is a part of 
   - [Install](#install)
   - [Usage](#usage)
 - [Used Technologies](#used-technologies)
-  - [API](#Api)
+  - [Technical Choices](#technical-choices)
+  - [API](#api)
 - [Images and Project Structure](#images-and-project-structure)
   - [Project Structure](#project-structure)
 - [Contributing](#contributing)
   - [Testing](#testing)
+- [Further Improvements](#further-improvements)
+- [Author](#author)
 
 ## Getting Started
 
-In order to run this project locally on you computer, you have to do the following steps.
+In order to run this project locally on your computer, you have to do the following steps.
 It is easier than you think.
 
 ### Requirements
 
 Make sure that you have the following installed on your computer:
 
-- Node.js (version 18 or higher)
-- npm or yarn
+- Node.js (version 20.19 or higher)
+- npm
 - Git
 
 ### Install
@@ -80,7 +83,7 @@ npm install
 
 ### Usage
 
-After installation, run the development server:
+To build the project for production run the development server:
 
 ```bash
 npm run dev
@@ -94,6 +97,12 @@ After installation, run the build server:
 npm run build
 ```
 
+And then run the following command to view it:
+
+```
+npm run preview
+```
+
 Open your browser and navigate to the local host address shown in the terminal.
 
 ## Used technologies
@@ -101,8 +110,8 @@ Open your browser and navigate to the local host address shown in the terminal.
 The tech stack for this project includes:
 
 - React
-- Typescript
-- Tailwind
+- TypeScript
+- Tailwind CSS
 - Shadcn/ui
 - TanStack Router
 - TanStack Query
@@ -113,7 +122,25 @@ The tech stack for this project includes:
 - Vitest
 - Husky
 - ESLint
-- PlayWright
+- Prettier
+- Lint-staged
+
+### Technical choices
+
+**TanStack Query:** caches the products, so going back to the homepage doesn’t fetch them again.
+
+**Zustand with persist:** keeps the cart in localStorage, so it survives a page refresh.
+
+**Search in url:** it is sharable and it survives a refresh
+
+**Filter → sort → paginate:** the product list goes through three steps, in this order:
+
+1. **Filter:** only products that match the search
+2. **Sort:** by the chosen sort option
+3. **Paginate:** only the products for the current page
+
+The order matters: if the list was paginated before sorting, "lowest price"
+would only sort the 9 products on the current page, not all of them.
 
 ### API
 
@@ -135,7 +162,7 @@ The index page on a computer:
 ![Index-desktop.png](public/images/screenshots/Index-desktop.png)
 
 The index page on a mobile:
-![Index-phone.png](public/images/screenshots/Index-phone.png)
+![Index-mobile.png](public/images/screenshots/Index-mobile.png)
 
 Product page on desktop:
 ![Product-desktop.png](public/images/screenshots/Product-desktop.png)
@@ -149,7 +176,7 @@ Cart on desktop:
 Cart on mobile:
 ![Cart-mobile.png](public/images/screenshots/Cart-mobile.png)
 
-## Project structure
+### Project structure
 
 ```
 sageshop/
@@ -197,16 +224,33 @@ To contribute to the project, simply install as detailed above, and then after f
 
 ### Testing
 
-In this project, there are two kinds of tests: unit tests and end-to-end (e2e) tests. To run each of these respectively, run the following commands:
+This project includes unit tests to test the sorting, form validation and the cart store.
+
+To run tests and to keep watch for changes, run the following command:
 
 ```
 npm test
-npx playwright test --headed
 ```
 
-There are actually many ways to run the playwright (e2e) tests. For example:
+To run all test only once, run the following command:
 
 ```
-npx playwright test tests/e2e/auth/login.spec.ts --headed  # run a single test
-npx playwright test --last-failed  # run last failed tests
+npm run test:run
 ```
+
+## Further Improvements
+
+The following features I wish to add at a later date:
+
+- [ ] Cart drawer
+- [ ] Category Pills
+
+## Author
+
+Kathrine Mellem Evensen
+
+[My portfolio website](https://kathrine-dev.vercel.app)
+
+[My Github Profile](https://github.com/Kateve52911)
+
+[My LinkedIn page](https://www.linkedin.com/in/kathrine-mellem-evensen-6855b612b)

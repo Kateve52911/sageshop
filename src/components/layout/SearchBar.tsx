@@ -5,7 +5,7 @@ import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from '@/components/ui/input-group';
+} from '@/components/ui/input-group.tsx';
 
 /**
  * Search bar for the product list both on the homepage and other pages. Searching on other pages takes you back to the homepage.
@@ -17,7 +17,7 @@ import {
 export default function SearchBar() {
   const { filter } = useSearch({ strict: false });
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   return (
     <InputGroup className="relative">
@@ -26,7 +26,7 @@ export default function SearchBar() {
         value={filter ?? ''}
         onChange={(e) => {
           void navigate({
-              to: '/',
+            to: '/',
             search: { filter: e.target.value || undefined, page: 1 },
             replace: pathname === '/',
           });

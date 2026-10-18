@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { Leaf, SearchIcon } from 'lucide-react';
 import CartLink from '@/components/cart/CartLink.tsx';
-import SearchBar from '@/routes/-components/SearchBar.tsx';
+import SearchBar from '@/components/layout/SearchBar.tsx';
 import { Button } from '@/components/ui/button.tsx';
 import { useState } from 'react';
 
