@@ -9,10 +9,10 @@ import StarRating from '@/components/product/StarRating';
 export default function ProductDetail({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4 my-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mx-4 my-5">
       <div>
         <img
-          className="rounded shadow-lg aspect-square object-cover"
+          className="rounded shadow-lg aspect-square block-110 object-cover"
           src={product.image.url}
           alt={product.image.alt}
         />

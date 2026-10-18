@@ -41,7 +41,7 @@ function RouteComponent() {
 
   return (
     <div className="gap-6 mx-4 lg:mx-auto my-5 max-w-5xl">
-      <PageBreadcrumb currentPage={data.title} />
+      <PageBreadcrumb currentPage={data.title.toLowerCase()} />
       <ProductDetail product={data} />
     </div>
   );

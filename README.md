@@ -1,6 +1,6 @@
 # SageShop
 
-![Index-computer.png](public/images/screenshots/Index-desktop.png)
+![Index-desktop.png](public/images/screenshots/Index-desktop.png)
 
 ## Intro
 
@@ -132,18 +132,22 @@ which handles errors in one place and throws an `APIError` with the status code.
 ### Images
 
 The index page on a computer:
-![Index-computer.png](public/images/screenshots/Index-desktop.png)
+![Index-desktop.png](public/images/screenshots/Index-desktop.png)
 
 The index page on a mobile:
 ![Index-phone.png](public/images/screenshots/Index-phone.png)
 
 Product page on desktop:
+![Product-desktop.png](public/images/screenshots/Product-desktop.png)
 
 Product page on mobile:
+![Product-mobile.png](public/images/screenshots/Product-mobile.png)
 
 Cart on desktop:
+![Cart-desktop.png](public/images/screenshots/Cart-desktop.png)
 
 Cart on mobile:
+![Cart-mobile.png](public/images/screenshots/Cart-mobile.png)
 
 ## Project structure
 
