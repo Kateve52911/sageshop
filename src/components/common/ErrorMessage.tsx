@@ -12,8 +12,8 @@ interface ErrorMessageProps {
  */
 export default function ErrorMessage({ error }: ErrorMessageProps) {
   return (
-    <div className={'grid w-full mx-auto my-10 max-w-md items-start gap-4'}>
-      <Alert variant={'destructive'}>
+    <div className="grid w-full mx-auto my-10 max-w-md items-start gap-4">
+      <Alert variant="destructive">
         <AlertTitle>Something went wrong</AlertTitle>
         <AlertDescription>{error.message}</AlertDescription>
       </Alert>

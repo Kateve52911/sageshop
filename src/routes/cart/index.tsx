@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { useCartStore } from '@/stores/cartStore';
-import {ArrowRight, Leaf} from 'lucide-react';
+import { ArrowRight, Leaf } from 'lucide-react';
 import CartItemRow from '@/components/cart/CartItemRow';
 import { Button } from '@/components/ui/button';
+import PageBreadcrumb from '@/components/common/Breadcrumb';
 
 export const Route = createFileRoute('/cart/')({
   component: Cart,
@@ -33,49 +34,55 @@ function Cart() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col items-center mx-auto gap-6 m-6">
-        <Leaf className="size-40 text-sage" strokeWidth={1}/>
-        <h2 className="text-2xl font-bold text-center text-sage">
-          Your shopping cart:
-        </h2>
-        <h3 className="text-xl">Your cart is empty.</h3>
-        <Button
+      <div className="gap-6 mx-4 lg:mx-auto my-5 max-w-5xl">
+        <PageBreadcrumb currentPage="Cart" />
+        <div className="flex flex-col items-center mx-auto gap-6 m-6">
+          <Leaf className="size-40 text-sage" strokeWidth={1} />
+          <h2 className="text-2xl font-bold text-center text-sage">
+            Your shopping cart:
+          </h2>
+          <h3 className="text-xl">Your cart is empty.</h3>
+          <Button
             className="flex items-center"
             render={<Link to="/" search={{ filter: undefined, page: 1 }} />}
             nativeButton={false}
-        >
-          Continue shopping <ArrowRight size={16} />
-        </Button>
+          >
+            Start shopping <ArrowRight size={16} />
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="flex flex-col gap-5 m-6">
-        <h2 className="text-2xl font-bold text-center text-sage">
-          Your shopping cart:
-        </h2>
-        {items.map((item) => (
-          <CartItemRow key={item.id} item={item} />
-        ))}
-        <div>
-          <div className="flex-col justify-start">
-            <p className="font-bold">Your Summary: </p>
-            <p>Total items: {totalItems}</p>
-            <p>Total price: {totalCost.toFixed(2)}</p>
-          </div>
-          <div className="flex gap-4 justify-end my-2">
-            <Button
-              variant="outline"
-              render={<Link to="/" search={{ filter: undefined, page: 1 }} />}
-              nativeButton={false}
-            >
-              Continue shopping <ArrowRight size={16} />
-            </Button>
-            <Button render={<Link to="/cart/success" />} nativeButton={false}>
-              Proceed to checkout
-            </Button>
+    <div className="gap-6 mx-4 lg:mx-auto my-5 max-w-5xl">
+      <PageBreadcrumb currentPage="Cart" />
+      <div className="flex flex-col items-center gap-6">
+        <div className="flex flex-col gap-5 m-6">
+          <h2 className="text-2xl font-bold text-center text-sage">
+            Your shopping cart:
+          </h2>
+          {items.map((item) => (
+            <CartItemRow key={item.id} item={item} />
+          ))}
+          <div>
+            <div className="flex-col justify-start">
+              <p className="font-bold">Your Summary: </p>
+              <p>Total items: {totalItems}</p>
+              <p>Total price: {totalCost.toFixed(2)}</p>
+            </div>
+            <div className="flex gap-4 justify-end my-2">
+              <Button
+                variant="outline"
+                render={<Link to="/" search={{ filter: undefined, page: 1 }} />}
+                nativeButton={false}
+              >
+                Continue shopping <ArrowRight size={16} />
+              </Button>
+              <Button render={<Link to="/cart/success" />} nativeButton={false}>
+                Proceed to checkout
+              </Button>
+            </div>
           </div>
         </div>
       </div>

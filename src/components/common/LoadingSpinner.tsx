@@ -8,7 +8,7 @@ import { Spinner } from '@/components/ui/spinner';
 export default function LoadingSpinner() {
   return (
     <div className="flex w-full max-w-xs mx-auto my-10 flex-col gap-4">
-      <Item variant={'muted'}>
+      <Item variant="muted">
         <ItemMedia>
           <Spinner />
         </ItemMedia>

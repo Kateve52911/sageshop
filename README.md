@@ -145,8 +145,6 @@ Cart on desktop:
 
 Cart on mobile:
 
-### Project structure:
-
 ## Project structure
 
 ```
