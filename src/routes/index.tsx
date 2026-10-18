@@ -5,7 +5,7 @@ import SortSelector, {
   type SortOptions,
 } from '@/routes/-components/SortSelector';
 import { useState } from 'react';
-import Hero from "@/routes/-components/Hero";
+import Hero from '@/routes/-components/Hero';
 
 /**
  * The homepage route.
@@ -24,7 +24,14 @@ export const Route = createFileRoute('/')({
     };
   },
   head: () => ({
-    meta: [{ title: 'SageShop | Products' }],
+    meta: [
+      {
+        name: 'description',
+        content:
+          'Get in touch with SageShop. Send us a message about your order, a product or anything else we can help you with.',
+      },
+      { title: 'SageShop | Products' },
+    ],
   }),
 });
 
@@ -36,16 +43,14 @@ export const Route = createFileRoute('/')({
 function Index() {
   const [sort, setSort] = useState<SortOptions>('default');
   return (
-      <div>
-        <Hero/>
-        <div className="mx-auto max-w-6xl justify-items-center my-2">
-          <h1 className="sr-only">Products</h1>
-          <div className="w-full sm:items-center gap-3 max-w-md lg:max-w-5xl lg:mx-auto flex flex-col sm:flex-row">
-            <SortSelector value={sort} onChange={setSort} />
-          </div>
-          <ProductList sort={sort} />
+    <div>
+      <Hero />
+      <div className="mx-auto max-w-6xl justify-items-center my-2">
+        <div className="w-full sm:items-center gap-3 max-w-md lg:max-w-5xl lg:mx-auto flex flex-col sm:flex-row">
+          <SortSelector value={sort} onChange={setSort} />
         </div>
+        <ProductList sort={sort} />
       </div>
-
+    </div>
   );
 }

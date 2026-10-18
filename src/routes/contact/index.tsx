@@ -19,7 +19,14 @@ import PageBreadcrumb from '@/components/common/Breadcrumb.tsx';
 export const Route = createFileRoute('/contact/')({
   component: RouteComponent,
   head: () => ({
-    meta: [{ title: 'SageShop | Contact' }],
+    meta: [
+      {
+        name: 'description',
+        content:
+          'Get in touch with SageShop. Send us a message about your order, a product or anything else we can help you with.',
+      },
+      { title: 'SageShop | Contact' },
+    ],
   }),
 });
 

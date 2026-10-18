@@ -14,7 +14,15 @@ export const Route = createFileRoute('/products/$productId')({
       queryFn: () => fetchProductById(params.productId),
     }),
   head: ({ loaderData }) => ({
-    meta: [{ title: `SageShop | ${loaderData?.title || 'Product'}` }],
+    meta: [
+      {
+        name: 'description',
+        content: loaderData
+          ? `${loaderData.description} Buy ${loaderData.title} at SageShop.`
+          : 'View this product at SageShop.',
+      },
+      { title: `SageShop | ${loaderData?.title || 'Product'}` },
+    ],
   }),
   errorComponent: ({ error }) => <ErrorMessage error={error} />,
 });

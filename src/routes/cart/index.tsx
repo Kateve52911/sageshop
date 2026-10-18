@@ -8,7 +8,10 @@ import PageBreadcrumb from '@/components/common/Breadcrumb';
 export const Route = createFileRoute('/cart/')({
   component: Cart,
   head: () => ({
-    meta: [{ title: 'SageShop | Cart' }],
+    meta: [
+      { name: 'description', content: 'noindex' },
+      { title: 'SageShop | Cart' },
+    ],
   }),
 });
 
