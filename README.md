@@ -196,13 +196,6 @@ To run all tests once, run the following command:
 npm run test:run
 ```
 
-## Further Improvements
-
-The following features I wish to add at a later date:
-
-- [ ] Cart drawer
-- [ ] Category Pills
-
 ## Author
 
 Kathrine Mellem Evensen
