@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/button';
 import type { Product } from '@/types/product.ts';
 import { useCartStore } from '@/stores/cartStore.ts';
 import { toast } from 'sonner';
-
+import StarRating from '@/components/product/StarRating.tsx';
 
 /** Props for `ProductCard`. */
 interface ProductCardProps {
@@ -58,11 +58,13 @@ export function ProductCard({ product }: ProductCardProps) {
               src={product.image.url}
               alt={product.image.alt}
               className=" transition-transform duration-300 motion-safe:group-hover:scale-105 motion-safe:group-focus-within:scale-105"
-          />
+            />
           </div>
         </CardHeader>
         <CardContent>
-          <CardTitle className="text-xl py-2 font-serif">{product.title}</CardTitle>
+          <CardTitle className="text-xl py-2 font-serif">
+            {product.title}
+          </CardTitle>
           <div className="flex gap-5 my-2 text-lg">
             <p className="font-bold">$ {product.discountedPrice}</p>
             {product.discountedPrice < product.price && (
@@ -72,6 +74,10 @@ export function ProductCard({ product }: ProductCardProps) {
           <CardDescription className="flex flex-col gap-2 line-clamp-2">
             <p>{product.description}</p>
           </CardDescription>
+          <p className="flex items-center my-2 gap-1">
+            <span className="font-bold">Product rating:</span>
+            <StarRating rating={product.rating} />
+          </p>
         </CardContent>
       </Link>
       <CardFooter className="flex justify-center gap-1 mt-auto">
