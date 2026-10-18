@@ -83,7 +83,7 @@ npm install
 
 ### Usage
 
-To build the project for production run the development server:
+To run the development server:
 
 ```bash
 npm run dev
@@ -91,7 +91,7 @@ npm run dev
 
 Open your browser and navigate to the local host address shown in the terminal.
 
-After installation, run the build server:
+To build the project for production:
 
 ```bash
 npm run build
@@ -131,7 +131,7 @@ The tech stack for this project includes:
 
 **Zustand with persist:** keeps the cart in localStorage, so it survives a page refresh.
 
-**Search in url:** it is sharable and it survives a refresh
+**Search in URL:** it is shareable and it survives a refresh
 
 **Filter → sort → paginate:** the product list goes through three steps, in this order:
 
@@ -154,7 +154,7 @@ Product data comes from the [Noroff Online Shop API](https://docs.noroff.dev/doc
 All API code is in `src/services/api/`. Every request goes through `fetchHelper`,
 which handles errors in one place and throws an `APIError` with the status code.
 
-## Images and Project structure:
+## Images and Project structure
 
 ### Images
 
@@ -180,22 +180,24 @@ Cart on mobile:
 
 ```
 sageshop/
+├── .husky/
+│   └── pre-commit              # Runs lint-staged and the tests before each commit
 ├── public/
 │   ├── _redirects              # Netlify: serve index.html on every path (SPA routing)
 │   └── images/                 # Favicons and README screenshots
 ├── src/
 │   ├── components/
 │   │   ├── cart/               # CartItemRow, CartLink (cart icon with item count)
-│   │   ├── common/             # ErrorMessage, LoadingSpinner
-│   │   ├── layout/             # Header, Footer
+│   │   ├── common/             # Breadcrumb (PageBreadcrumb), ErrorMessage, LoadingSpinner
+│   │   ├── layout/             # Header, Footer, SearchBar (used in the header on every page)
 │   │   ├── product/            # ProductCard, StarRating
 │   │   └── ui/                 # shadcn/ui components
 │   ├── lib/
 │   │   └── utils.ts            # cn() helper for class names
 │   ├── routes/                 # File-based routing (TanStack Router)
 │   │   ├── __root.tsx          # Root layout: header, footer, page titles
-│   │   ├── index.tsx           # Homepage: hero, search, sort, product list
-│   │   ├── -components/        # Homepage-only components (Hero, ProductList, SearchBar, SortSelector, PaginationControls)
+│   │   ├── index.tsx           # Homepage: hero, sort, product list
+│   │   ├── -components/        # Homepage components (Hero, ProductList, SortSelector, PaginationControls)
 │   │   ├── products/
 │   │   │   ├── $productId.tsx  # Product detail page
 │   │   │   └── -components/    # ProductDetail
@@ -209,14 +211,21 @@ sageshop/
 │   ├── services/api/           # API fetch functions, fetchHelper and APIError
 │   ├── stores/
 │   │   └── cartStore.ts        # Zustand cart store (saved to localStorage)
+│   ├── test/
+│   │   └── testSetup.ts        # Vitest setup: in-memory localStorage for the tests
 │   ├── types/                  # Product and CartItem types
+│   ├── utils/helperFunctions/
+│   │   └── sortProducts.ts     # Sorts the product list by the chosen option
 │   ├── index.css               # Tailwind and theme variables
 │   └── main.tsx                # App entry: router and TanStack Query setup
 ├── components.json             # shadcn/ui config
 ├── eslint.config.js
 ├── .prettierrc
-└── vite.config.ts
+└── vite.config.ts              # Vite and Vitest config
 ```
+
+Folders starting with `-` are ignored by the router, so components can live next to the page that uses them.
+Test files (`*.test.ts`) are placed next to the file they test.
 
 ## Contributing
 
@@ -232,7 +241,7 @@ To run tests and to keep watch for changes, run the following command:
 npm test
 ```
 
-To run all test only once, run the following command:
+To run all tests once, run the following command:
 
 ```
 npm run test:run
